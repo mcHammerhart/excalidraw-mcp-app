@@ -5,9 +5,9 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod/v4";
 
-// Works both from source (server.ts) and compiled (dist/server.js)
+// Works both from source (src/server.ts) and compiled (dist/server.js)
 const DIST_DIR = import.meta.filename.endsWith(".ts")
-  ? path.join(import.meta.dirname, "dist")
+  ? path.join(import.meta.dirname, "..", "dist")
   : import.meta.dirname;
 
 // ============================================================

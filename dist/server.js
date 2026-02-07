@@ -35758,7 +35758,7 @@ var EMPTY_COMPLETION_RESULT = {
 // src/server.ts
 import fs from "node:fs/promises";
 import path from "node:path";
-var DIST_DIR = import.meta.filename.endsWith(".ts") ? path.join(import.meta.dirname, "dist") : import.meta.dirname;
+var DIST_DIR = import.meta.filename.endsWith(".ts") ? path.join(import.meta.dirname, "..", "dist") : import.meta.dirname;
 var RECALL_CHEAT_SHEET = `# Excalidraw Element Format
 
 Thanks for calling read_me! Do NOT call it again in this conversation — you will not see anything new. Now use create_view to draw.
