@@ -376,6 +376,7 @@ Call read_me first to learn the element format.`,
             ui: {
               ...cspMeta.ui,
               prefersBorder: true,
+              permissions: { clipboardWrite: {} },
             },
           },
         }],
