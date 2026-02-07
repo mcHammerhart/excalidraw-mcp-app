@@ -9,7 +9,7 @@ MCP server that streams hand-drawn Excalidraw diagrams with smooth viewport came
 In [claude.ai](https://claude.ai):
 
 1. Go to **Settings** → **Connectors** → **Add custom connector**
-2. Server URL: `https://excalidraw-mcp-app.vercel.app/mcp`
+2. Server URL: `https://excalidraw-mcp-app.vercel.app/mcp` :point_left:
 3. Done — start using Excalidraw in your conversations
 
 ### Alternative: Local Server
@@ -48,7 +48,15 @@ Example prompts:
 - "Draw a cute cat using excalidraw"
 - "Draw an architecture diagram showing a user connecting to an API server which talks to a database"
 
-## Releasing a New Version
+## What are MCP Apps and how can I build one?
+
+Text responses can only go so far. Sometimes users need to interact with data, not just read about it. [MCP Apps](https://github.com/modelcontextprotocol/ext-apps/) is an official Model Context Protocol extension that lets servers return interactive HTML interfaces (data visualizations, forms, dashboards) that render directly in the chat.
+
+- **Getting started for humans**: [documentation](https://modelcontextprotocol.io/docs/extensions/apps)
+- **Getting started for AIs**: [skill](https://github.com/modelcontextprotocol/ext-apps/blob/main/plugins/mcp-apps/skills/create-mcp-app/SKILL.md)
+
+<details>
+<summary>Releasing a New Version</summary>
 
 ```bash
 # 1. Make changes, commit, push
@@ -63,15 +71,13 @@ npm run build
 mcpb pack .
 
 # 5. Create GitHub release with bundle attached
-gh release create v0.2.0 excalidraw-mcp-app.mcpb --title "v0.2.0" --notes "What changed"
+gh release create v0.3.0 excalidraw-mcp-app.mcpb --title "v0.3.0" --notes "What changed"
+
+# 6. Deploy to Vercel
+docker exec smithery bash -c 'cd /app && git pull && npx vercel --prod --yes'
 ```
 
-## What are MCP Apps and how can I build one?
-
-Text responses can only go so far. Sometimes users need to interact with data, not just read about it. [MCP Apps](https://github.com/modelcontextprotocol/ext-apps/) is an official Model Context Protocol extension that lets servers return interactive HTML interfaces (data visualizations, forms, dashboards) that render directly in the chat.
-
-- **Getting started for humans**: [documentation](https://modelcontextprotocol.io/docs/extensions/apps)
-- **Getting started for AIs**: [skill](https://github.com/modelcontextprotocol/ext-apps/blob/main/plugins/mcp-apps/skills/create-mcp-app/SKILL.md)
+</details>
 
 ## Credits
 
