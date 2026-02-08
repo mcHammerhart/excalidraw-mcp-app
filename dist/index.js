@@ -60939,6 +60939,34 @@ Every create_view call returns a \`checkpointId\` in its response. To continue f
 
 The saved state (including any user edits made in fullscreen) is loaded from the client, and your new elements are appended on top. This saves tokens — you don't need to re-send the entire diagram.
 
+## Dark Mode
+
+If the user asks for a dark theme/mode diagram, use a massive dark background rectangle as the FIRST element (before cameraUpdate). Make it 10x the camera size so it covers the entire viewport even when panning:
+
+\`{"type":"rectangle","id":"darkbg","x":-4000,"y":-3000,"width":10000,"height":7500,"backgroundColor":"#1e1e2e","fillStyle":"solid","strokeColor":"transparent","strokeWidth":0}\`
+
+Then use these colors on the dark background:
+
+**Text colors (on dark):**
+| Color | Hex | Use |
+|-------|-----|-----|
+| White | \`#e5e5e5\` | Primary text, titles |
+| Muted | \`#a0a0a0\` | Secondary text, annotations |
+| NEVER | \`#555\` or darker | Invisible on dark bg! |
+
+**Shape fills (on dark):**
+| Color | Hex | Good For |
+|-------|-----|----------|
+| Dark Blue | \`#1e3a5f\` | Primary nodes |
+| Dark Green | \`#1a4d2e\` | Success, output |
+| Dark Purple | \`#2d1b69\` | Processing, special |
+| Dark Orange | \`#5c3d1a\` | Warning, pending |
+| Dark Red | \`#5c1a1a\` | Error, critical |
+| Dark Teal | \`#1a4d4d\` | Storage, data |
+
+**Stroke/arrow colors (on dark):**
+Use the Primary Colors from above — they're bright enough on dark backgrounds. For shape borders, use slightly lighter variants or \`#555555\` for subtle outlines.
+
 ## Tips
 - Do NOT call read_me again — you already have everything you need
 - Use the color palette consistently
