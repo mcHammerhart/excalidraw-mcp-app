@@ -276,7 +276,13 @@ function DiagramView({ toolInput, isFinal, displayMode, onElements, editedElemen
     const svg = svgRef.current.querySelector("svg");
     if (!svg) return;
     const { minX, minY } = sceneBoundsRef.current;
-    const vb = sceneToSvgViewBox(animatedVP.current, minX, minY);
+    // Auto-correct to 4:3 at render time (expand smaller dimension)
+    const { x, y, width: w, height: h } = animatedVP.current;
+    const ratio = w / h;
+    const vp4x3: ViewportRect = Math.abs(ratio - 4 / 3) < 0.01 ? animatedVP.current
+      : ratio > 4 / 3 ? { x, y, width: w, height: Math.round(w * 3 / 4) }
+      : { x, y, width: Math.round(h * 4 / 3), height: h };
+    const vb = sceneToSvgViewBox(vp4x3, minX, minY);
     svg.setAttribute("viewBox", `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
   }, []);
 
