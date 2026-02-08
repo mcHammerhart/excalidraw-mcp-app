@@ -725,8 +725,8 @@ function ExcalidrawApp() {
       {/* SVG: stays visible until editor is fully settled */}
       {!editorSettled && (
         <div
-          onClick={displayMode === "inline" ? toggleFullscreen : undefined}
-          style={{ cursor: displayMode === "inline" ? "pointer" : undefined }}
+          onClick={undefined}
+          style={undefined}
         >
           <DiagramView toolInput={toolInput} isFinal={inputIsFinal} displayMode={displayMode} onElements={(els) => { elementsRef.current = els; setElements(els); }} editedElements={userEdits ?? undefined} onViewport={(vp) => { svgViewportRef.current = vp; }} />
         </div>
