@@ -8,8 +8,8 @@ import { deflateSync } from "node:zlib";
 import { z } from "zod/v4";
 import type { CheckpointStore } from "./checkpoint-store.js";
 
-/** Maximum allowed size for element/data input strings (5 MB). */
-const MAX_INPUT_BYTES = 5 * 1024 * 1024;
+/** Maximum allowed size for element/data input strings (100 MB). */
+const MAX_INPUT_BYTES = 100 * 1024 * 1024;
 
 // Works both from source (src/server.ts) and compiled (dist/server.js)
 const DIST_DIR = import.meta.filename.endsWith(".ts")
